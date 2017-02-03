@@ -20,7 +20,7 @@ bundle exec rake db:seed
 Location.__elasticsearch__.search(Location.build_search(nil,{:lat => 78.2, :lon => 81.2})).results.map &:_source
 
 ## => explanation:
-the search body is built by calling Rider.build_search(request_body, options)
+the search body is built by calling Location.build_search(request_body, options)
 since we pass in nil for request body, the build_search method adds a match_all query as the default query, and then builds the post_filter based on the options hash.
 after that we call results.map &:_source, this basically maps each result to just give its source.
 
